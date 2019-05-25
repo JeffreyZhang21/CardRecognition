@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
-public class QRCodeGeneration {
+public class QRCodeCardGeneration {
     
 
     private static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException 

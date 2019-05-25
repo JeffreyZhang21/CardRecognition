@@ -1,4 +1,4 @@
-package qrCodeTesting;
+package qrCodeGeneration;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
-public class QRCodeTest {
-    private static final String QR_CODE_IMAGE_PATH = "./qrCodeTest.png";
+public class TestingQRCodeGeneration {
+    
 
-    private static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException {
+    private static void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException 
+    {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
 
@@ -20,13 +21,21 @@ public class QRCodeTest {
         MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+    	final int width = 350;
+    	final int height = 350;
+    	
+    	final String qrCodeEncoded = "this is a test";
+    	final String fileName = "test.png"; // Must end in .png for file extension
+    	 	
         try {
-            generateQRCodeImage("QrCodeTest", 350, 350, QR_CODE_IMAGE_PATH);
+            generateQRCodeImage(qrCodeEncoded, width, height, fileName);
         } catch (WriterException e) {
             System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
         }
+	  
     }
 }

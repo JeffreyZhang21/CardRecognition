@@ -2,14 +2,11 @@ package qrCodeReading;
 
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.HybridBinarizer;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
 public class QRCodeReader {
 
@@ -19,17 +16,6 @@ public class QRCodeReader {
         LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
-//       bitmap = bitmap.crop(0, 0, bitmap.getWidth()/2, bitmap.getHeight());
-//        
-//    
-//        
-//        Path path = FileSystems.getDefault().getPath("test.png");
-//        try {
-//			MatrixToImageWriter.writeToPath( bitmap.getBlackMatrix(), "PNG", path);
-//		} catch (NotFoundException e1) {
-//			e1.printStackTrace();
-//		}
-        
         try {
             Result result = new MultiFormatReader().decode(bitmap);
             return result.getText();
@@ -41,7 +27,7 @@ public class QRCodeReader {
 
     public static void main(String[] args) {
         try {
-            File file = new File("QrCodes//1 of clovers.png");
+            File file = new File("test.png"); // to access qr code use folder name // file name or just file name
             String decodedText = decodeQRCode(file);
             if(decodedText == null) {
                 System.out.println("No QR Code found in the image");
