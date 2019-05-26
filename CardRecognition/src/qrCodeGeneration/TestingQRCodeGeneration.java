@@ -23,8 +23,8 @@ public class TestingQRCodeGeneration {
 
     public static void main(String[] args)
     {
-    	final int width = 350;
-    	final int height = 350;
+    	final int width  = 30;
+    	final int height = 30;
     	
     	final String qrCodeEncoded = "this is a test";
     	final String fileName = "test.png"; // Must end in .png for file extension

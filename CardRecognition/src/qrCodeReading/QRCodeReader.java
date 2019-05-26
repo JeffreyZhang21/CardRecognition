@@ -15,7 +15,6 @@ public class QRCodeReader {
         BufferedImage bufferedImage = ImageIO.read(qrCodeimage);
         LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
         try {
             Result result = new MultiFormatReader().decode(bitmap);
             return result.getText();
@@ -27,7 +26,7 @@ public class QRCodeReader {
 
     public static void main(String[] args) {
         try {
-            File file = new File("test.png"); // to access qr code use folder name // file name or just file name
+            File file = new File("QrCodes1clovers"); // to access qr code use folder name // file name or just file name
             String decodedText = decodeQRCode(file);
             if(decodedText == null) {
                 System.out.println("No QR Code found in the image");
