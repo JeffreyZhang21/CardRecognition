@@ -5,6 +5,12 @@
 	<classpathentry kind="lib" path="libs/core-3.3.0.jar"/>
 	<classpathentry kind="lib" path="libs/javase-3.3.0.jar"/>
 	<classpathentry kind="lib" path="libs/core.jar"/>
-	<classpathentry kind="lib" path="libs/bluecove-1.2.3-signed.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/core.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/finch.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/gridworld.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/gstreamer-java.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/jna.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/jnaerator-0.9.5.jar"/>
+	<classpathentry kind="lib" path="libs/libraries/video.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,6 +1,7 @@
-package blackJack;
+package qrCodeReading;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
@@ -21,10 +22,10 @@ public class QRScanners
             Result[] results = new QRCodeMultiReader().decodeMultiple(bitmap);
             vals = new String[results.length];
             for(int i=0; i<vals.length; i++)
-            	vals[i] = results[i].getText();   
+            	vals[i] = results[i].getText();  
+           return vals;
         } 
         catch (Exception e) 
         { return null; }
-		return null;
 	}
 }

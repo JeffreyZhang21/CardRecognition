@@ -2,7 +2,6 @@ package blackJack;
 
 import java.util.ArrayList;
 
-
 public class CardStack 
 {
 	private ArrayList<Card> cards;
