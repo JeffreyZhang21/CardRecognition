@@ -1,12 +1,9 @@
 package gui;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
-import java.util.HashSet;
-
-import blackJack.*;
+import java.util.HashMap;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.video.*;
 import qrCodeReading.QRScanners;
 
@@ -17,9 +14,7 @@ public class GUI extends PApplet
 	
 	private Capture cam;
 	private QRScanners qrScan= new QRScanners();
-	private HashSet<Card> usedCards = new HashSet<Card>();
-	private CardStack dealersCards = new CardStack();
-	private CardStack playersCards = new CardStack();
+	private HashMap<String,String> cardToImg= new HashMap<String,String>();
 	
 	
 	public void settings()
@@ -29,13 +24,13 @@ public class GUI extends PApplet
     
     public void setup()
     {
-    	setupCam(0);
+    	setUpCam(0);
+    	setUpMap();
     }
     
     public void draw()
     {
     	render(0,0);
-    
     }
     
     public void render(int x, int y)
@@ -45,9 +40,16 @@ public class GUI extends PApplet
     	{
 			renderCam(x,y);
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
-			System.out.println(Arrays.toString(qrCodes));
+			if(qrCodes != null)
+			{
+				for(int i=0; i<qrCodes.length; i++)
+				{
+					PImage img = new PImage();
+					img = loadImage("QrCodes//" +cardToImg.get(qrCodes[i]));
+					image(img,i * img.width,cam.height);
+				}
+			}
     	}
-
     }
     
     public void renderBackground(int x, int y)
@@ -58,7 +60,7 @@ public class GUI extends PApplet
     	rect(x,cam.height + y, cam.width,height-cam.height + y);
     }
     
-    public void setupCam(int choosen)
+    public void setUpCam(int choosen)
     {
     	String[] cameras = Capture.list();
         System.out.println("Current Camera: " + cameras[choosen].toString()); 
@@ -74,9 +76,17 @@ public class GUI extends PApplet
 	}
 
 	public String[] scan(int x, int y, int w, int h)
-	{ return qrScan.scan(((BufferedImage) cam.getImage()).getSubimage(x, y, w, h)); }
+	{ return qrScan.Multiscan(((BufferedImage) cam.getImage()).getSubimage(x, y, w, h)); }
 	
  	public String[] scan(int x, int y)
-	{ 	return qrScan.scan((BufferedImage) cam.getImage()); }	
+	{ 	return qrScan.Multiscan((BufferedImage) cam.getImage()); }	
 
+ 	public void setUpMap()
+ 	{
+ 		final String[] types = new String[] {"diamonds","hearts","spades","clovers"};
+ 		for(String suit: types)
+ 			for(int number=1; number<13; number++)
+ 				cardToImg.put(suit.charAt(0) + " " + number, number + " of " + suit + ".png" );
+ 	}
+ 	
 }
