@@ -2,15 +2,15 @@ package blackJack;
 
 import java.util.ArrayList;
 
+import card.Card;
+import card.Suit;
+
 public class CardStack 
 {
 	private ArrayList<Card> cards;
 	
 	public CardStack()
 	{ cards = new ArrayList<>(); }
-	
-	public void addCard(String card)
-	{ cards.add(new Card(card)); }
 	
 	public void addCard(Card card)
 	{ cards.add(card); }
@@ -50,7 +50,7 @@ public class CardStack
 	{
 		if(cards.isEmpty())
 			return false;
-		String s = cards.get(0).getSuit();
+		Suit s = cards.get(0).getSuit();
 		for(int i=1; i<cards.size(); i++)
 			if(!cards.get(i).getSuit().equals(s))
 				return false;
