@@ -1,4 +1,4 @@
-package blackJack;
+package blackjack;
 
 import java.util.ArrayList;
 
