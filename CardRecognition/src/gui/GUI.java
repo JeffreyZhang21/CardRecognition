@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.HashMap;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -62,12 +63,13 @@ public class GUI extends PApplet
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
 			if(qrCodes != null)
 			{
-				for(int i=0; i<qrCodes.length; i++)
-				{
-					PImage img = new PImage();
-					img = loadImage("QrCodes//" +cardToImg.get(qrCodes[i]));
-					image(img,i * img.width,cam.height);
-				}
+				System.out.println(Arrays.toString(qrCodes));
+//				for(int i=0; i<qrCodes.length; i++)
+//				{
+//					PImage img = new PImage();
+//					img = loadImage("QrCodes//" +cardToImg.get(qrCodes[i]));
+//					image(img,i * img.width,cam.height);
+//				}
 			}
     	}
     }
