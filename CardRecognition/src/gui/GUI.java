@@ -4,9 +4,9 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.HashMap;
 import processing.core.PApplet;
-import processing.core.PImage;
 import processing.video.*;
 import qrCodeReading.QRScanners;
+import textToSpeech.*;
 
 /**
  * This is the graphical user interface generation for the project
@@ -41,7 +41,7 @@ public class GUI extends PApplet
     
     public void mousePressed()
     {
-    	
+    	Speech.say("hello");
     }
     
     public void keyPressed()
@@ -62,15 +62,7 @@ public class GUI extends PApplet
 			renderCam(x,y);
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
 			if(qrCodes != null)
-			{
 				System.out.println(Arrays.toString(qrCodes));
-//				for(int i=0; i<qrCodes.length; i++)
-//				{
-//					PImage img = new PImage();
-//					img = loadImage("QrCodes//" +cardToImg.get(qrCodes[i]));
-//					image(img,i * img.width,cam.height);
-//				}
-			}
     	}
     }
 
