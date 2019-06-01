@@ -63,7 +63,6 @@ public class GUI extends PApplet
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
 			if(qrCodes != null)
 				System.out.println(Arrays.toString(qrCodes));
-
     	}
     }
 
