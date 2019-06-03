@@ -3,6 +3,8 @@ package gui;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+
 import processing.core.PApplet;
 import processing.video.*;
 import qrCodeReading.QRScanners;
@@ -22,6 +24,7 @@ public class GUI extends PApplet
 	private Capture cam;                                                         // Create a camera which access data from a real camera
 	private QRScanners qrScan = new QRScanners();                                // Class that allows easy scanning access for buffered images
 	private HashMap<String,String> cardToImg = new HashMap<String,String>();     // Map that converts QrCode Encoding into the qrCodes file path
+	private HashSet<String> set = new HashSet<String>();
 	
 	public void settings()
     {
@@ -41,7 +44,7 @@ public class GUI extends PApplet
     
     public void mousePressed()
     {
-    	Speech.say("hello");
+    	set.clear();
     }
     
     public void keyPressed()
@@ -62,7 +65,15 @@ public class GUI extends PApplet
 			renderCam(x,y);
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
 			if(qrCodes != null)
-				System.out.println(Arrays.toString(qrCodes));
+				for(String s: qrCodes)
+				{
+					if(!set.contains(s))
+					{
+						System.out.println(s);
+						Speech.say(s);
+						set.add(s);
+					}
+				}
     	}
     }
 
