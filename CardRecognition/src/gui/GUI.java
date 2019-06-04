@@ -64,6 +64,7 @@ public class GUI extends PApplet
     	{
 			renderCam(x,y);
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
+
 			if(qrCodes != null)
 				for(String s: qrCodes)
 				{
