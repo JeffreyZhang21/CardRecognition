@@ -1,4 +1,4 @@
-package card;
+package blackjack;
 
 /**
  * Class representation of a single card. A card stores the value it stores and it suit. the value goes

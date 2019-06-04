@@ -1,4 +1,4 @@
-package card;
+package blackjack;
 
 /**
  * contain the suits of a card

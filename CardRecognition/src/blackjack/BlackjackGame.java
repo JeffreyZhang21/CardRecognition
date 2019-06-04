@@ -2,13 +2,15 @@ package blackjack;
 
 public class BlackjackGame {
 	
+	public Hand player;
+	public Hand dealer;
 	
 	public BlackjackGame()
 	{
-		CardStack player = new CardStack();
+		
 	}
 	
-	public void playTurn()
+	public void hit(Card c)
 	{
 		
 	}
