@@ -9,6 +9,7 @@ import processing.core.PApplet;
 import processing.video.*;
 import qrCodeReading.QRScanners;
 import textToSpeech.*;
+import textToSpeechAlt.*;
 
 /**
  * This is the graphical user interface generation for the project
@@ -59,6 +60,7 @@ public class GUI extends PApplet
      */
     public void render(int x, int y)
     {
+    	Voice voice = new Voice("kevin16");
     	renderBackground(x,y);
     	if(cam.available())
     	{
@@ -71,7 +73,7 @@ public class GUI extends PApplet
 					if(!set.contains(s))
 					{
 						System.out.println(s + " ");
-						Speech.say(s);
+						voice.say(s);
 						set.add(s);
 					}
 				}
