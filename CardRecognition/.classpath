@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="libs/libraries/jna.jar"/>
 	<classpathentry kind="lib" path="libs/libraries/jnaerator-0.9.5.jar"/>
 	<classpathentry kind="lib" path="libs/libraries/video.jar"/>
+	<classpathentry kind="lib" path="libs/cmu_us_kal.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
