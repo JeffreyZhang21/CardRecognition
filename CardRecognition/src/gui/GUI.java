@@ -69,7 +69,7 @@ public class GUI extends PApplet
 				{
 					if(!set.contains(s))
 					{
-						System.out.println(s);
+						System.out.println(s + " ");
 						Speech.say(s);
 						set.add(s);
 					}
