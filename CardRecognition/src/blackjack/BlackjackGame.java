@@ -2,7 +2,7 @@ package blackjack;
 
 public class BlackjackGame {
 	
-	public Hand player;
+	public Hand player; 
 	public Hand dealer;
 	
 	public BlackjackGame()
@@ -10,7 +10,7 @@ public class BlackjackGame {
 		
 	}
 	
-	public void hit(Card c)
+	public void hit()
 	{
 		
 	}
