@@ -68,15 +68,56 @@ public class GUI extends PApplet
 			String[] qrCodes = scan(x,y,cam.width,cam.height);
 
 			if(qrCodes != null)
+			{
 				for(String s: qrCodes)
 				{
+					String suit = "";
+					
+					// check the suit of the string
+					
+					if(s.substring(0, 1).toLowerCase().equals("s"))
+						suit = "spades";
+					else if(s.substring(0, 1).toLowerCase().equals("d"))
+						suit = "diamonds";
+					else if(s.substring(0, 1).toLowerCase().equals("c"))
+						suit = "clubs";
+					else
+						suit = "hearts";
+					
+					// check for jack / queen / king / ace
+					
 					if(!set.contains(s))
 					{
-						System.out.println(s + " ");
-						voice.say(s);
+						if(s.indexOf("11") != -1)
+						{
+							System.out.println("jack of" + suit);
+							voice.say("jack of " + suit);
+						}
+						else if(s.indexOf("12") != -1)
+						{
+							System.out.println("queen of " + suit);
+							voice.say("queen of " + suit);
+						}
+						else if(s.indexOf("13") != -1)
+						{
+							System.out.println("king of " + suit);
+							voice.say("king of " + suit);
+						}
+						else if(s.indexOf("1") != -1)
+						{
+							System.out.println("ace of" + suit);
+							voice.say("ace of " + suit);
+						}
+						else
+						{
+							System.out.println(suit + " ");
+							voice.say(Integer.parseInt(s) + suit);
+						}
+						
 						set.add(s);
 					}
 				}
+			}
     	}
     }
 
