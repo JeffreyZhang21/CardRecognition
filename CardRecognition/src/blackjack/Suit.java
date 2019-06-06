@@ -8,8 +8,28 @@ package blackjack;
  */
 public enum Suit 
 {
-	heart,
-	diamond,
-	spade,
-	clover;
+	HEARTS {
+		public String toString()
+		{
+			return "hearts";
+		}
+	},
+	DIAMONDS {
+		public String toString()
+		{
+			return "diamonds";
+		}
+	},
+	SPADES {
+		public String toString()
+		{
+			return "spades";
+		}
+	},
+	CLUBS {
+		public String toString()
+		{
+			return "clubs";
+		}
+	},
 }
