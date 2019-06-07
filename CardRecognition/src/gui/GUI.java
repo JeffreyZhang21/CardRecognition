@@ -10,6 +10,7 @@ import processing.video.*;
 import qrCodeReading.QRScanners;
 import textToSpeech.*;
 import textToSpeechAlt.*;
+import blackjack.Suit;
 
 /**
  * This is the graphical user interface generation for the project
@@ -26,6 +27,7 @@ public class GUI extends PApplet
 	private QRScanners qrScan = new QRScanners();                                // Class that allows easy scanning access for buffered images
 	private HashMap<String,String> cardToImg = new HashMap<String,String>();     // Map that converts QrCode Encoding into the qrCodes file path
 	private HashSet<String> set = new HashSet<String>();
+	private Voice voice = new Voice("kevin16");
 	
 	public void settings()
     {
@@ -46,6 +48,8 @@ public class GUI extends PApplet
     public void mousePressed()
     {
     	set.clear();
+    	voice.say("Set cleared");
+    	
     }
     
     public void keyPressed()
@@ -60,7 +64,6 @@ public class GUI extends PApplet
      */
     public void render(int x, int y)
     {
-    	Voice voice = new Voice("kevin16");
     	renderBackground(x,y);
     	if(cam.available())
     	{
@@ -73,18 +76,21 @@ public class GUI extends PApplet
 				{
 					String suit = "";
 					
-					// check the suit of the string
+					/* Checks the first character of the string to determine the suit */
 					
 					if(s.substring(0, 1).toLowerCase().equals("s"))
-						suit = "spades";
+						suit = Suit.SPADES.toString();
 					else if(s.substring(0, 1).toLowerCase().equals("d"))
-						suit = "diamonds";
+						suit = Suit.DIAMONDS.toString();
 					else if(s.substring(0, 1).toLowerCase().equals("c"))
-						suit = "clubs";
+						suit = Suit.CLUBS.toString();
 					else
-						suit = "hearts";
+						suit = Suit.HEARTS.toString();
 					
-					// check for jack / queen / king / ace
+					/* 
+					 * Checks the number in the string. If the number is not between 2 and 10 inclusive,
+					 * the card is either a jack (11), queen (12), king (13), or an ace (1).
+					 */
 					
 					if(!set.contains(s))
 					{
@@ -111,7 +117,7 @@ public class GUI extends PApplet
 						else
 						{
 							System.out.println(suit + " ");
-							voice.say(Integer.parseInt(s) + suit);
+							voice.say(Integer.parseInt(s) + "of " + suit);
 						}
 						
 						set.add(s);
