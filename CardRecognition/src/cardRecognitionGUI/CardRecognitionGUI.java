@@ -1,14 +1,12 @@
-package gui;
+package cardRecognitionGUI;
 
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
 import processing.core.PApplet;
 import processing.video.*;
 import qrCodeReading.QRScanners;
-import textToSpeech.*;
 import textToSpeechAlt.*;
 import blackjack.Suit;
 
@@ -18,10 +16,10 @@ import blackjack.Suit;
  * @version 1
  * @Since 5/28/19
  */
-public class GUI extends PApplet
+public class CardRecognitionGUI extends PApplet
 {
 	public static void main(String[] args)
-	{ PApplet.main("gui.GUI"); }
+	{ PApplet.main("cardRecognitionGUI.CardRecognitionGUI"); }
 	
 	private Capture cam;                                                         // Create a camera which access data from a real camera
 	private QRScanners qrScan = new QRScanners();                                // Class that allows easy scanning access for buffered images
