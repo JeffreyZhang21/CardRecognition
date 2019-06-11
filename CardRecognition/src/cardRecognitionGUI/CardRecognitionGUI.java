@@ -7,7 +7,7 @@ import java.util.HashSet;
 import processing.core.PApplet;
 import processing.video.*;
 import qrCodeReading.QRScanners;
-import textToSpeechAlt.*;
+import textToSpeechNew.*;
 import blackjack.Suit;
 
 /**
